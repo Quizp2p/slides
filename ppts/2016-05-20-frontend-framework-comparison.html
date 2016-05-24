@@ -3,9 +3,12 @@
 <head>
   <title>FrontEnd Framework Comparison</title>
   <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, minimal-ui">
+  <meta name="viewport"
+        content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, minimal-ui">
   <link rel="stylesheet" href="../node_modules/reveal.js/css/reveal.css">
   <link rel="stylesheet" href="../node_modules/reveal.js/css/theme/black.css">
+  <link rel="stylesheet" href="../node_modules/reveal.js/lib/css/zenburn.css">
+  <script src="../node_modules/reveal.js/lib/js/head.min.js"></script>
   <script src="../node_modules/reveal.js/js/reveal.js"></script>
   <script src="../node_modules/reveal.js/plugin/highlight/highlight.js"></script>
   <style>
@@ -26,47 +29,6 @@
       <p>俞洋洋 前端开发 <img src="../imgs/hansight_logo.png" class="logo"></p>
     </section>
     <section>
-      <h3>CSS预处理器</h3>
-      <ul>
-        <li><a href="http://lesscss.org/">less</a></li>
-        <li><a href="http://sass-lang.com/">sass</a></li>
-        <li><a href="http://stylus-lang.com/">stylus</a></li>
-      </ul>
-    </section>
-    <section>
-      <h3>比较</h3>
-      <table>
-        <thead>
-        <tr>
-          <th>项目</th>
-          <th>基于</th>
-          <th>github</th>
-          <th>mixins</th>
-        </tr>
-        </thead>
-        <tbody>
-        <tr>
-          <td>less</td>
-          <td>node</td>
-          <td><img src="../imgs/github-less.png"></td>
-          <td><a href="https://github.com/madebysource/lesshat">lesshat</a></td>
-        </tr>
-        <tr>
-          <td>sass</td>
-          <td>ruby</td>
-          <td><img src="../imgs/github-sass.png"></td>
-          <td><a href="https://github.com/matthieua/sass-css3-mixins">sass-css3-mixins</a></td>
-        </tr>
-        <tr>
-          <td>stylus</td>
-          <td>node</td>
-          <td><img src="../imgs/github-stylus.png"></td>
-          <td><a href="https://github.com/tj/nib">nib</a></td>
-        </tr>
-        </tbody>
-      </table>
-    </section>
-    <section>
       <h3>包管理</h3>
       <ul>
         <li>duo</li>
@@ -75,17 +37,128 @@
       </ul>
     </section>
     <section>
-      <h3>构建工具</h3>
-      <ul>
-        <li>grunt</li>
-        <li>gulp</li>
-      </ul>
+      <section>
+        <h3>CSS预处理器</h3>
+        <ul>
+          <li><a href="http://lesscss.org/">less</a></li>
+          <li><a href="http://sass-lang.com/">sass</a></li>
+          <li><a href="http://stylus-lang.com/">stylus</a></li>
+        </ul>
+      </section>
+      <section>
+        <h3>比较</h3>
+        <table>
+          <thead>
+          <tr>
+            <th>项目</th>
+            <th>基于</th>
+            <th>github</th>
+            <th>mixins</th>
+          </tr>
+          </thead>
+          <tbody>
+          <tr>
+            <td>less</td>
+            <td>node</td>
+            <td><img src="../imgs/github-less.png"></td>
+            <td><a href="https://github.com/madebysource/lesshat">lesshat</a></td>
+          </tr>
+          <tr>
+            <td>sass</td>
+            <td>ruby</td>
+            <td><img src="../imgs/github-sass.png"></td>
+            <td><a href="https://github.com/matthieua/sass-css3-mixins">sass-css3-mixins</a></td>
+          </tr>
+          <tr>
+            <td>stylus</td>
+            <td>node</td>
+            <td><img src="../imgs/github-stylus.png"></td>
+            <td><a href="https://github.com/tj/nib">nib</a></td>
+          </tr>
+          </tbody>
+        </table>
+      </section>
+    </section>
+    <section>
+      <section>
+        <h3>构建工具</h3>
+        <ul>
+          <li>grunt</li>
+          <li>gulp</li>
+        </ul>
+      </section>
+      <section>
+        <h3>比较</h3>
+        <table>
+          <thead>
+          <tr>
+            <th>项目</th>
+            <th>基于</th>
+            <th>风格</th>
+            <th>核心</th>
+            <th>github</th>
+            <th>插件</th>
+          </tr>
+          </thead>
+          <tbody>
+          <tr>
+            <td>grunt</td>
+            <td>node</td>
+            <td>配置</td>
+            <td>文件</td>
+            <td><img src="../imgs/github-grunt.png"></td>
+            <td>5718</td>
+          </tr>
+          <tr>
+            <td>gulp</td>
+            <td>node</td>
+            <td>代码</td>
+            <td>流</td>
+            <td><img src="../imgs/github-gulp.png"></td>
+            <td>2419</td>
+          </tr>
+          </tbody>
+        </table>
+      </section>
+      <section>
+        <h3>grunt</h3>
+        <pre><code data-trim data-noescape>
+grunt.initConfig({
+  sass: {
+    dist: {
+      files: [{
+        cwd: 'app/styles',
+        src: '**/*.scss',
+        dest: '../.tmp/styles',
+        expand: true,
+        ext: '.css'
+      }]
+    }
+  }
+});
+grunt.registerTask('default', ['sass']);
+      </code></pre>
+        <h3>gulp</h3>
+      <pre><code data-trim data-noescape>
+gulp.task('sass', function () {
+  gulp.src('app/styles/**/*.scss')
+    .pipe(sass())
+    .pipe(autoprefixer('last 1 version'))
+    .pipe(gulp.dest('dist/styles'));
+});
+gulp.task('default', function() {
+  gulp.run('sass');
+  gulp.watch('app/styles/**/*.scss', function() {
+    gulp.run('sass');
+  });
+});
+      </code></pre>
+      </section>
     </section>
     <section>
       <h3>模块管理</h3>
       <ul>
         <li>requirejs</li>
-        <li>seajs</li>
         <li>systemjs</li>
         <li>browserify</li>
         <li>webpack</li>
@@ -103,11 +176,21 @@
         <li>Ember</li>
       </ul>
     </section>
+    <section>
+      <h3>架构</h3>
+      <p>npm + less + angular2 + webpack</p>
+    </section>
   </div>
 </div>
 <script>
   Reveal.initialize({
-    history: true
+    dependencies: [
+      {
+        src: '../node_modules/reveal.js/plugin/highlight/highlight.js', async: true, callback: function () {
+        hljs.initHighlightingOnLoad();
+      }
+      }
+    ]
   });
 </script>
 </body>
