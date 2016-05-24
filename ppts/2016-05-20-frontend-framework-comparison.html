@@ -29,16 +29,85 @@
       <p>俞洋洋 前端开发 <img src="../imgs/hansight_logo.png" class="logo"></p>
     </section>
     <section>
-      <h3>包管理</h3>
-      <ul>
-        <li>duo</li>
-        <li>bower</li>
-        <li>npm</li>
-      </ul>
+      <section>
+        <h3>包管理</h3>
+        <p>管理第三方资源</p>
+        <ul>
+          <li>duo</li>
+          <li>bower</li>
+          <li>npm</li>
+        </ul>
+      </section>
+      <section>
+        <h3>duo</h3>
+        <p>Duo is a next-generation package manager that blends the best ideas from Component, Browserify and Go to make organizing and writing front-end code quick and painless.</p>
+        <pre><code data-trim data-noescape>$ npm install -g duo</code></pre>
+      </section>
+      <section>
+        <h3>duo</h3>
+        <i>app.js</i>
+        <pre><code data-trim data-noescape>
+var uid = require('matthewmueller/uid');
+var fmt = require('yields/fmt');
+
+var msg = fmt('Your unique ID is %s!', uid());
+window.alert(msg);
+        </code></pre>
+        <i>app.css</i>
+        <pre><code data-trim data-noescape>
+@import 'necolas/normalize.css';
+@import './layout/layout.css';
+
+body {
+  color: teal;
+  background: url('./background-image.jpg');
+}
+        </code></pre>
+        <i>build</i>
+        <pre><code data-trim data-noescape>$ duo app.js app.css</code></pre>
+      </section>
+      <section>
+        <h3>bower</h3>
+        <p>Web sites are made of lots of things — frameworks, libraries, assets, and utilities. Bower manages all these things for you.</p>
+        <pre><code data-trim data-noescape>$ npm install -g bower</code></pre>
+        <pre><code data-trim data-noescape>
+# installs the project dependencies listed in bower.json
+$ bower install
+# registered package
+$ bower install jquery
+# GitHub shorthand
+$ bower install desandro/masonry
+# Git endpoint
+$ bower install git://github.com/user/package.git
+# URL
+$ bower install http://example.com/script.js
+        </code></pre>
+      </section>
+      <section>
+        <h3>npm</h3>
+        <p>npm is the package manager for JavaScript. Find, share, and reuse packages of code from hundreds of thousands of developers — and assemble them in powerful new ways.</p>
+        <pre><code data-trim data-noescape>
+# installs the project dependencies listed in package.json
+$ npm install
+# run scripts
+$ npm run build
+        </code></pre>
+      </section>
     </section>
+
     <section>
       <section>
         <h3>CSS预处理器</h3>
+        <pre><code data-trim data-noescape>
+transition: all 1s;
+-webkit-transition: all 1s;
+-moz-transition: all 1s;
+-o-transition: all 1s;
+-ms-translation: all 1s;
+        </code></pre>
+        <pre><code data-trim data-noescape>
+.transition(all 1s);
+        </code></pre>
         <ul>
           <li><a href="http://lesscss.org/">less</a></li>
           <li><a href="http://sass-lang.com/">sass</a></li>
@@ -137,9 +206,9 @@ grunt.initConfig({
   }
 });
 grunt.registerTask('default', ['sass']);
-      </code></pre>
+        </code></pre>
         <h3>gulp</h3>
-      <pre><code data-trim data-noescape>
+        <pre><code data-trim data-noescape>
 gulp.task('sass', function () {
   gulp.src('app/styles/**/*.scss')
     .pipe(sass())
@@ -152,43 +221,227 @@ gulp.task('default', function() {
     gulp.run('sass');
   });
 });
-      </code></pre>
+        </code></pre>
       </section>
     </section>
     <section>
-      <h3>模块管理</h3>
+      <section>
+        <h3>模块管理</h3>
+        <ul>
+          <li>requirejs</li>
+          <li>systemjs</li>
+          <li>browserify</li>
+          <li><strong>webpack</strong></li>
+        </ul>
+      </section>
+      <section>
+        <h3>
+          <del>requirejs/systemjs/browserify</del>
+        </h3>
+      </section>
+      <section>
+        <h3>webpack</h3>
+        <p>一切皆模块</p>
+      </section>
+    </section>
+    <section>
+      <section>
+        <h3>框架或库</h3>
+        <ul>
+          <li>Angular1</li>
+          <li>Angular2</li>
+          <li>React</li>
+          <li>Vue</li>
+          <li>Polymer</li>
+          <li>Ember</li>
+          <li>Meteor</li>
+        </ul>
+      </section>
+      <section>
+        <h3>angular1</h3>
+        <ul>
+          <li>
+            特性
+            <ul>
+              <li>MVC</li>
+              <li>过滤器</li>
+              <li>依赖注入</li>
+              <li>指令</li>
+            </ul>
+          </li>
+          <li>
+            缺点
+            <ul>
+              <li>伪模块</li>
+              <li>设计缺陷</li>
+              <li>性能瓶颈</li>
+            </ul>
+          </li>
+        </ul>
+      </section>
+      <section>
+        <h3>angular2</h3>
+        <ul>
+          <li>
+            特性
+            <ul>
+              <li>MVC</li>
+              <li>typescript</li>
+              <li>组件</li>
+              <li>rxjs(Reactive Extensions for javascript)</li>
+              <li>css encapsulation</li>
+            </ul>
+          </li>
+          <li>
+            缺点
+            <ul>
+              <li>多依赖</li>
+              <li>RC版本</li>
+              <li>路由模块重构当中</li>
+            </ul>
+          </li>
+        </ul>
+      </section>
+      <section>
+        <h3>react</h3>
+        <ul>
+          <li>
+            特性
+            <ul>
+              <li>V</li>
+              <li>jsx</li>
+              <li>组件</li>
+              <li>virtual dom</li>
+              <li>跨平台</li>
+            </ul>
+          </li>
+          <li>
+            缺点
+            <ul>
+              <li>v + any</li>
+            </ul>
+          </li>
+        </ul>
+      </section>
+      <section>
+        <h3>vue</h3>
+        <ul>
+          <li>
+            特性
+            <ul>
+              <li>V</li>
+              <li>组件</li>
+              <li>angular + react</li>
+            </ul>
+          </li>
+          <li>
+            缺点
+            <ul>
+              <li>v + any</li>
+              <li>生态</li>
+            </ul>
+          </li>
+        </ul>
+      </section>
+      <section>
+        <h3>polymer</h3>
+        <ul>
+          <li>
+            特性
+            <ul>
+              <li>web components</li>
+              <li>polymer-cli</li>
+            </ul>
+          </li>
+          <li>
+            缺点
+            <ul>
+              <li>面向未来</li>
+            </ul>
+          </li>
+        </ul>
+      </section>
+      <section>
+        <h3>ember</h3>
+        <ul>
+          <li>
+            特性
+            <ul>
+              <li>组件</li>
+              <li>ember-cli</li>
+            </ul>
+          </li>
+          <li>
+            缺点
+            <ul>
+              <li>模板引擎的思路</li>
+            </ul>
+          </li>
+        </ul>
+      </section>
+      <section>
+        <h3>meteor</h3>
+        <ul>
+          <li>
+            特性
+            <ul>
+              <li>分布式数据协议(Distributed Data Protocol)</li>
+              <li>meteor-cli</li>
+            </ul>
+          </li>
+          <li>
+            缺点
+            <ul>
+              <li>直接操作数据库</li>
+              <li>选型限制</li>
+            </ul>
+          </li>
+        </ul>
+      </section>
+    </section>
+    <section>
+      <h3>关于未来</h3>
       <ul>
-        <li>requirejs</li>
-        <li>systemjs</li>
-        <li>browserify</li>
-        <li>webpack</li>
+        <li>css preProcessor?</li>
+        <li>web component</li>
+        <li>framework-cli</li>
+        <li>...</li>
       </ul>
     </section>
     <section>
-      <h3>框架或库</h3>
+      <h3>unit test</h3>
       <ul>
-        <li>Angular1</li>
-        <li>Angular2</li>
-        <li>React</li>
-        <li>Vue</li>
-        <li>Polymer</li>
-        <li>Meteor</li>
-        <li>Ember</li>
+        <li>qunit</li>
+        <li>jasmine</li>
+        <li>mocha</li>
+        <li>...</li>
+      </ul>
+    </section>
+    <section>
+      <h3>项目相关</h3>
+      <ul>
+        <li>数据操作</li>
+        <li>图表展示</li>
+        <li>跨平台</li>
+        <li>...</li>
       </ul>
     </section>
     <section>
       <h3>架构</h3>
-      <p>npm + less + angular2 + webpack</p>
+      <p>npm + less + webpack + angular2</p>
     </section>
   </div>
 </div>
 <script>
   Reveal.initialize({
+    history: true,
     dependencies: [
       {
-        src: '../node_modules/reveal.js/plugin/highlight/highlight.js', async: true, callback: function () {
-        hljs.initHighlightingOnLoad();
-      }
+        src: '../node_modules/reveal.js/plugin/highlight/highlight.js',
+        async: true,
+        callback: function () {
+          hljs.initHighlightingOnLoad();
+        }
       }
     ]
   });
