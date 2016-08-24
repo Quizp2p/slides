@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Kibana Develop Summary</title>
+    <meta charset="utf-8">
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, minimal-ui">
+    <link rel="stylesheet" href="../node_modules/reveal.js/css/reveal.css">
+    <link rel="stylesheet" href="../node_modules/reveal.js/css/theme/black.css">
+    <link rel="stylesheet" href="../node_modules/reveal.js/lib/css/zenburn.css">
+    <script src="../node_modules/reveal.js/lib/js/head.min.js"></script>
+    <script src="../node_modules/reveal.js/js/reveal.js"></script>
+    <script src="../node_modules/reveal.js/plugin/highlight/highlight.js"></script>
+    <style>
+        .reveal section img.logo {
+            box-shadow: none;
+            background-color: transparent;
+            border: none;
+            height: 30px;
+            margin: 0;
+        }
+    </style>
+</head>
+<body>
+<div class="reveal">
+    <div class="slides">
+        <section>
+            <h3>Kibana Develop Summary</h3>
+            <p>俞洋洋 前端开发 <img src="../imgs/hansight_logo.png" class="logo"></p>
+        </section>
+        <section>
+            <section>
+                <h3>整体结构</h3>
+                <img src="../imgs/kibana-develop-summary/framework.png">
+            </section>
+            <section>
+                <h3>dev-server</h3>
+                <ul>
+                    <li>app.js - Nodejs启动文件</li>
+                    <li>config.json - 配置项</li>
+                    <li>user.json - 伪造的用户信息</li>
+                </ul>
+                <pre><code data-trim data-noescape>
+                    npm run dev
+                </code></pre>
+                <p>localhost:8005</p>
+            </section>
+            <section>
+                <h3>其它</h3>
+                <ul>
+                    <li>doc - 文档</li>
+                    <li>src - 源码</li>
+                    <li>tasks - build辅助任务</li>
+                    <li>其它</li>
+                </ul>
+            </section>
+            <section>
+                <h3>项目架构</h3>
+                <p>npm + bower + requirejs + angularjs + less + grunt</p>
+            </section>
+            <section>
+                <img src="../imgs/kibana-develop-summary/src.png">
+            </section>
+            <section>
+                <ul>
+                    <li>assets/public - web静态资源</li>
+                    <li>components - 公用组件</li>
+                    <li>directives - 公用指令</li>
+                    <li>factories/service - 公用服务</li>
+                    <li>filters - 公用过滤器</li>
+                    <li>images - kibana图片资源</li>
+                    <li>lib - 第三方依赖</li>
+                    <li>partials - 公用页面结构</li>
+                    <li>plugins - 业务功能模块</li>
+                    <li>registry - 模块组织</li>
+                    <li>styles - 页面样式</li>
+                    <li>ui - 公用ui组件</li>
+                    <li>utils</li>
+                    <li>vis-template - 快速建图模块</li>
+                    <li>dashboard.(html|js) - 入口</li>
+                </ul>
+            </section>
+        </section>
+        <section>
+            <section>
+                <h3>功能开发</h3>
+                <ul>
+                    <li>添加业务代码</li>
+                    <li>配置entry</li>
+                    <li>配置菜单</li>
+                </ul>
+            </section>
+            <section>
+                <h3>添加业务代码</h3>
+                <p>src/kibana/plugins</p>
+                <p><img src="../imgs/kibana-develop-summary/plugin.png"></p>
+                <ul>
+                    <li>controllers</li>
+                    <li>templates</li>
+                    <li>services</li>
+                    <li>filters</li>
+                    <li>index.js</li>
+                </ul>
+            </section>
+            <section>
+                <h3>配置entry/菜单</h3>
+                <p>src/kibana/config</p>
+                <ul>
+                    <li>plugins当中添加业务entry</li>
+                    <li>menus添加菜单配置(id表示url)</li>
+                </ul>
+            </section>
+        </section>
+        <section>
+            <ul>
+                <li>添加图表 <div>src/kibana/plugins/vis_types/vislib/$chartName.js</div></li>
+                <li>注册图表 <div>src/kibana/components/vis_types/index.js</div></li>
+                <li>添加handler <div>src/kibana/components/vislib/lib/handler/handler_types.js</div></li>
+                <li>添加layout <div>src/kibana/components/vislib/lib/layout/layout_types.js</div></li>
+                <li>添加画图逻辑 <div>src/kibana/components/vislib/visualizations/$chartName.js</div></li>
+                <li>注册画图逻辑 <div>src/kibana/components/vislib/visualizations/vis_types.js</div></li>
+                <li>图表配置 <div>src/kibana/plugins/vis_types/vislib/editors/$chartName.html</div></li>
+            </ul>
+        </section>
+        <section>
+            <p>savedDashboards</p>
+            <p>src/kibana/plugins/dashboard/services/saved_dashboards.js</p>
+            <ul>
+                <li>find() - 查询所有</li>
+                <li>get(id) - 获取单个</li>
+                <li>delete(id) - 删除</li>
+            </ul>
+        </section>
+        <section>
+            <ul>
+                <li>savedSearches</li>
+                <li>savedVisualizations</li>
+            </ul>
+        </section>
+        <section>
+            <h2>Q&A</h2>
+        </section>
+    </div>
+</div>
+<script>
+    Reveal.initialize({
+        history: true,
+        dependencies: [
+            {
+                src: '../node_modules/reveal.js/plugin/highlight/highlight.js',
+                async: true,
+                callback: function () {
+                    hljs.initHighlightingOnLoad();
+                }
+            }
+        ]
+    });
+</script>
+</body>
+</html>
